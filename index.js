@@ -4,12 +4,14 @@ for (var i = 0; i < DrumButtonNum; i++) {
 
         var letter = this.innerHTML;
         addSound(letter);
+        buttonAnimation(letter);
 
     });
 }
 
 document.addEventListener("keydown", function(event) {
     addSound(event.key);
+    buttonAnimation(event.key);
 });
 
 
@@ -45,4 +47,13 @@ function addSound(key) {
             snare.play();
             break;
     }
+}
+
+function buttonAnimation(curentKey) {
+    var activekey = document.querySelector("." + curentKey);
+    activekey.classList.add("pressed");
+    setTimeout(function() {
+        activekey.classList.remove("pressed");
+    }, 100);
+
 }
